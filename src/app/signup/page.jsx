@@ -7,7 +7,7 @@ const SignUpPage = () => {
   return (
     <div>
       <SignUpForm />
-      <p className="text-center my-4">Or SignIn with </p>
+      {/* <p className="text-center my-4">Or SignIn with </p> */}
       {/* <SocialLogin /> */}
     </div>
   );

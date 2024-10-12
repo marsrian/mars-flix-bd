@@ -20,7 +20,7 @@ const Login = async () => {
   return (
     <div>
       <LoginForm />
-      <p className="text-center my-4">Or SignIn with </p>
+      {/* <p className="text-center my-4">Or SignIn with </p> */}
       {/* <SocialLogin /> */}
     </div>
   )
