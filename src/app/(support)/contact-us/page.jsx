@@ -1,4 +1,4 @@
-import ContactUsForm from "@/components/form/ContactUsForm";
+import ContactUsForm from "@/components/form/ContactusForm";
 import { FiMail } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
 
@@ -10,7 +10,7 @@ const ContactUsPage = () => {
       </h1>
       <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-28">
         <ContactUsForm />
-        {/* Contact Info */}
+        {/* Contact  Info */}
         <div className="">
           <h5 className="text-2xl font-bold mb-4">Contact Info :</h5>
           <p className="flex items-center mb-3">
