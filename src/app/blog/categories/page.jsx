@@ -1,6 +1,15 @@
 import Link from "next/link";
 import CategoryByPost from "../CategoryByPost";
 
+export const metadata = {
+  title: "Blog",
+  openGraph: {
+    title: "Blog | MarsFlixBD Movie info list",
+    description:
+      "Anime, Movie, Series huge collection see in MarsFlixBD website.",
+  },
+};
+
 async function fetchBlogs() {
     const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`, {
       cache: "no-store",

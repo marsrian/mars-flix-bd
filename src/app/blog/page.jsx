@@ -10,6 +10,15 @@ import {
 import AllBlogPost from "./AllBlog";
 import BlogPagination from "@/components/BlogPagination";
 
+export const metadata = {
+  title: "Blog",
+  openGraph: {
+    title: "Blog | MarsFlixBD Movie info list",
+    description:
+      "Anime, Movie, Series huge collection see in MarsFlixBD website.",
+  },
+};
+
 async function fetchBlogs() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`, {
     cache: "no-store",
@@ -21,15 +30,6 @@ async function fetchBlogs() {
 
   return res.json();
 }
-
-export const metadata = {
-  title: "Blog",
-  openGraph: {
-    title: "Blog | MarsFlixBD Movie info list",
-    description:
-      "Anime, Movie, Series huge collection see in MarsFlixBD website.",
-  },
-};
 
 const Blog = async ({ searchParams }) => {
   const blogs = await fetchBlogs();
@@ -130,7 +130,7 @@ const Blog = async ({ searchParams }) => {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div className="col-span-1 md:col-span-4 flex flex-col gap-2">
           {allBlogs.map((blog) => (
-            <AllBlogPost blog={blog} key={blog.id} />
+            <AllBlogPost blog={blog} key={blog._id} />
           ))}
           <BlogPagination
             hasNextPage={end < blogs.length}

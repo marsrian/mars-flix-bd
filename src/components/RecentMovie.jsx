@@ -25,19 +25,41 @@ import RecentKoreanTVSeries from "./HomePage/RecentKoreanSeries";
 const RecentMovie = () => {
   return (
     <div className="mt-24">
-      <h1 className="text-2xl md:text-4xl font-bold text-center italic">Recent Movie & Series</h1>
+      <h2 className="text-2xl font-semibold text-center my-10">
+        <span className="text-red-500">Recent</span> Movie & Series
+      </h2>
       <Tabs defaultValue="Anime Movie" className="container mx-auto mt-12">
         <TabsList className="grid w-full grid-cols-3 md:grid-cols-4 gap-2 px-2 md:px-0">
-          <TabsTrigger className="border p-2" value="Anime Movie">Anime Movie</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Anime Series">Anime Series</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Bangla Movie">Bangla Movie</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Hollywood Movie">Hollywood Movie</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Bollywood Movie">Bollywood Movie</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Korean Movie">Korean Movie</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Bangla Web series">Bangla Web series</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Hindi Web series">Hindi Web series</TabsTrigger>
-          <TabsTrigger className="border p-2" value="English TV series">English TV series</TabsTrigger>
-          <TabsTrigger className="border p-2" value="Korean TV series">Korean TV series</TabsTrigger>
+          <TabsTrigger className="border p-2" value="Anime Movie">
+            Anime Movie
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Anime Series">
+            Anime Series
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Bangla Movie">
+            Bangla Movie
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Hollywood Movie">
+            Hollywood Movie
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Bollywood Movie">
+            Bollywood Movie
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Korean Movie">
+            Korean Movie
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Bangla Web series">
+            Bangla Web series
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Hindi Web series">
+            Hindi Web series
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="English TV series">
+            English TV series
+          </TabsTrigger>
+          <TabsTrigger className="border p-2" value="Korean TV series">
+            Korean TV series
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="Anime Movie">
           <RecentAnimeMovie />
