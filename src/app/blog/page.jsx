@@ -1,4 +1,3 @@
-import PaginationControls from "@/components/Pagination";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import {
   AiTwotoneCalendar,
 } from "react-icons/ai";
 import AllBlogPost from "./AllBlog";
+import BlogPagination from "@/components/BlogPagination";
 
 async function fetchBlogs() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`, {
@@ -35,10 +35,12 @@ const Blog = async ({ searchParams }) => {
   const blogs = await fetchBlogs();
 
   const page = searchParams["page"] ?? "1";
-  const per_page = searchParams["per_page"] ?? "3";
+  const per_page = searchParams["per_page"] ?? "10";
 
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
+
+  const sortedBlogs = blogs.sort((a, b) => b.likes.length - a.likes.length);
 
   const allBlogs = blogs.slice(start, end);
 
@@ -79,9 +81,9 @@ const Blog = async ({ searchParams }) => {
         <h2 className="text-2xl font-semibold text-center my-10">
           <span className="text-red-500">Trending</span> Blog
         </h2>
-        {blogs.length > 0 && (
+        {sortedBlogs.length > 0 && (
           <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
-            {blogs.map((blog, index) => (
+            {sortedBlogs.slice(0, 3).map((blog) => (
               <Link
                 key={blog._id}
                 href={`/blog/${blog?._id}`}
@@ -97,7 +99,9 @@ const Blog = async ({ searchParams }) => {
                   ></Image>
                   <div className="p-4">
                     <h3 className="font-semibold mb-4">{blog?.title}</h3>
-                    <p className="mb-6 text-sm">{blog?.excerpt.slice(0, 100)}...</p>
+                    <p className="mb-6 text-sm">
+                      {blog?.excerpt.slice(0, 100)}...
+                    </p>
                     <div className="flex justify-between">
                       <p className="flex items-center gap-1">
                         <AiOutlineHeart size={20} />
@@ -128,13 +132,17 @@ const Blog = async ({ searchParams }) => {
           {allBlogs.map((blog) => (
             <AllBlogPost blog={blog} key={blog.id} />
           ))}
-          <PaginationControls
+          <BlogPagination
             hasNextPage={end < blogs.length}
             hasPrevPage={start > 0}
+            currentPage={Number(page)}
+            totalPages={Math.ceil(blogs.length / Number(per_page))}
           />
         </div>
         <div className="col-span-1 border rounded-md">
-          <h1 className="text-xl font-bold p-2 border-b text-center">Category:</h1>
+          <h1 className="text-xl font-bold p-2 border-b text-center">
+            Category:
+          </h1>
           {categoryList.map((category) => (
             <p key={category.name} className="border-b p-2 px-4">
               <Link href={category.path}>{category.name}</Link>

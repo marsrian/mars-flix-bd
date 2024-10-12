@@ -1,37 +1,45 @@
 "use client";
-
 import { useRouter, useSearchParams } from "next/navigation";
 
-const BlogPagination = ({ hasNextPage, hasPrevPage }) => {
+const BlogPagination = ({ hasNextPage, hasPrevPage, currentPage, totalPages }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const page = searchParams.get("page") ?? "1";
-  const per_page = searchParams.get("per_page") ?? "3";
+  const per_page = searchParams.get("per_page") ?? "10";
+
   return (
-    <div className="mt-2 flex items-center gap-2">
+    <div className="mt-6 flex items-center justify-center gap-2">
       <button
-        className={!hasPrevPage ? "bg-blue-300 text-white p-1" : "bg-blue-500 text-white p-1"}
+        className={`w-12 text-white p-1 rounded-sm ${
+          !hasPrevPage ? "bg-emerald-300" : "bg-emerald-700"
+        }`}
         disabled={!hasPrevPage}
         onClick={() => {
-          router.push(`/?page=${Number(page) - 1}&per_page=${per_page}`);
+          router.push(
+            `/blog?page=${Number(page) - 1}&per_page=${per_page}`
+          );
         }}
       >
-        prev page
+        Prev
       </button>
 
-      <div>
-        {page} / {Math.ceil(10 / Number(per_page))}
+      <div className="p-1 rounded-sm">
+        {currentPage} / {totalPages}
       </div>
 
       <button
-        className={!hasNextPage ? "bg-blue-300 text-white p-1" : "bg-blue-500 text-white p-1"}
+        className={`w-12 text-white p-1 rounded-sm ${
+          !hasNextPage ? "bg-emerald-300" : "bg-emerald-700"
+        }`}
         disabled={!hasNextPage}
         onClick={() => {
-          router.push(`/?page=${Number(page) + 1}&per_page=${per_page}`);
+          router.push(
+            `/blog?page=${Number(page) + 1}&per_page=${per_page}`
+          );
         }}
       >
-        next page
+        Next
       </button>
     </div>
   );

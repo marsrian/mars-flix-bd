@@ -3,7 +3,7 @@ import LoginForm from '@/components/form/LoginForm'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import { redirect } from 'next/navigation'
-import SocialLogin from '@/components/form/SocialLogin'
+// import SocialLogin from '@/components/form/SocialLogin'
 
 export const metadata = {
   title: "Login | MarsFlixBD",
@@ -21,7 +21,7 @@ const Login = async () => {
     <div>
       <LoginForm />
       <p className="text-center my-4">Or SignIn with </p>
-      <SocialLogin />
+      {/* <SocialLogin /> */}
     </div>
   )
 }

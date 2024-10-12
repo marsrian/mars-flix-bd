@@ -19,6 +19,7 @@ async function fetchBlogs() {
     return await res.json();
   } catch (error) {
     console.log(error.message);
+    return {blogs: []};
   }
 }
 
@@ -38,11 +39,11 @@ const RecentBlog = async () => {
     <div className="mt-20">
       <div className="md:container mx-auto px-2 md:px-0">
         <h2 className="text-2xl font-semibold text-center my-10">
-          <span className="text-red-500">Trending</span> Blog
+          <span className="text-red-500">Recent</span> Blog
         </h2>
         {blogs.length > 0 && (
           <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
-            {blogs.map((blog) => (
+            {blogs.slice(0,6).map((blog) => (
               <Link
                 key={blog._id}
                 href={`/blog/${blog?._id}`}
