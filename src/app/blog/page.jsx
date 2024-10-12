@@ -92,8 +92,8 @@ const Blog = async ({ searchParams }) => {
                 <div className="flex flex-col gap-4">
                   <Image
                     src={blog.image.url}
-                    width={200}
-                    height={100}
+                    width={500}
+                    height={500}
                     alt={blog?.image?.url}
                     className="w-auto h-60"
                   ></Image>

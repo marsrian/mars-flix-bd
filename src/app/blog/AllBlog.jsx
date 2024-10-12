@@ -19,7 +19,7 @@ const AllBlogPost = ({ blog }) => {
         <Image
           src={image?.url}
           width={200}
-          height={100}
+          height={200}
           alt={title}
           className="w-full h-full"
         />

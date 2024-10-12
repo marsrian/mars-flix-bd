@@ -11,7 +11,9 @@ import {
 async function fetchBlogs() {
   try {
     const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`, {
-      cache: "no-store",
+      next: {
+        revalidate: 5,
+      },
     });
     if (!res.ok) {
       throw new Error("Failed to fetch data");
@@ -52,8 +54,8 @@ const RecentBlog = async () => {
                   <div className="flex flex-col gap-4">
                     <Image
                       src={blog.image.url}
-                      width={200}
-                      height={100}
+                      width={500}
+                      height={500}
                       alt={blog?.image?.url}
                       className="w-auto h-60"
                     ></Image>

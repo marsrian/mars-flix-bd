@@ -68,21 +68,21 @@ const Navbar = () => {
     };
   }, []);
 
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//       if (
-//         searchResultsRef.current &&
-//         !searchResultsRef.current.contains(event.target)
-//       ) {
-//         setSearchResults([]);
-//       }
-//     };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchResultsRef.current &&
+        !searchResultsRef.current.contains(event.target)
+      ) {
+        setSearchResults([]);
+      }
+    };
 
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -94,27 +94,27 @@ const Navbar = () => {
   const handleHideDropdown = () => setShowDropdown((prev) => false);
 
   // Search Field:
-//   const handleSearchInputChange = (e) => {
-//     setSearchTerm(e.target.value);
-//   };
+  const handleSearchInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-//   const handleSearchSubmit = async (e) => {
-//     e.preventDefault();
-//     if (searchTerm) {
-//       try {
-//         const movieRes = await fetch(`/api/movies?name=${searchTerm}`);
-//         const movies = await movieRes.json();
-//         setSearchResults(movies);
-//         console.log(movies);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     }
-//   };
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    if (searchTerm) {
+      try {
+        const movieRes = await fetch(`/api/movies?name=${searchTerm}`);
+        const movies = await movieRes.json();
+        setSearchResults(movies);
+        console.log(movies);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
-//   const handleSearchResultClick = () => {
-//     setSearchResults([]);
-//   };
+  const handleSearchResultClick = () => {
+    setSearchResults([]);
+  };
   return (
     <div
       className={`sticky top-0 z-40 ${
@@ -141,13 +141,13 @@ const Navbar = () => {
         {/* Search Field: */}
         <div className="hidden md:block" ref={searchResultsRef}>
           <form
-            // onSubmit={handleSearchSubmit}
+            onSubmit={handleSearchSubmit}
             className="flex items-center gap-2"
           >
             <input
               type="text"
-              // value={searchTerm}
-            //   onChange={handleSearchInputChange}
+              value={searchTerm}
+                onChange={handleSearchInputChange}
               placeholder="Search Movie only"
               className="border rounded-md px-2 py-1"
             />
@@ -174,28 +174,28 @@ const Navbar = () => {
               >
                 {searchResults.movies.map((movie) => (
                   <li key={movie._id} onClick={handleSearchResultClick}>
-                    {movie.category === "668a50d1e611d41804d5fef3" ? (
+                    {movie.category === "6707deacefc8651f796e12e9" ? (
                       <Link
                         href={`/bangla-movie/${movie._id}`}
                         className="hover:text-gray-400"
                       >
                         {movie.movieName}
                       </Link>
-                    ) : movie.category === "668a50dce611d41804d5fef6" ? (
+                    ) : movie.category === "6707deb3efc8651f796e12ec" ? (
                       <Link
                         href={`/bollywood-movie/${movie._id}`}
                         className="hover:text-gray-400"
                       >
                         {movie.movieName}
                       </Link>
-                    ) : movie.category === "668a50e5e611d41804d5fef9" ? (
+                    ) : movie.category === "6707debaefc8651f796e12ef" ? (
                       <Link
                         href={`/hollywood-movie/${movie._id}`}
                         className="hover:text-gray-400"
                       >
                         {movie.movieName}
                       </Link>
-                    ) : movie.category === "6697f7187cfffca977f476c4" ? (
+                    ) : movie.category === "6707e54befc8651f796e139c" ? (
                       <Link
                         href={`/korean-movie/${movie._id}`}
                         className="hover:text-gray-400"
@@ -355,7 +355,10 @@ const Navbar = () => {
                   <Image
                     onClick={handleShowDropdown}
                     src={
-                      userData?.avatar?.url || userData?.avatar?.url || session?.user?.image || demoImage
+                      userData?.avatar?.url ||
+                      userData?.avatar?.url ||
+                      session?.user?.image ||
+                      demoImage
                     }
                     alt="avatar"
                     width={40}
@@ -628,13 +631,13 @@ const Navbar = () => {
                   {/* Search Field: */}
                   <div className="block md:hidden" ref={searchResultsRef}>
                     <form
-                    //   onSubmit={handleSearchSubmit}
+                        onSubmit={handleSearchSubmit}
                       className="flex items-center gap-2"
                     >
                       <input
                         type="text"
                         value={searchTerm}
-                        // onChange={handleSearchInputChange}
+                        onChange={handleSearchInputChange}
                         placeholder="Search Movie only"
                         className="border rounded-md p-1 w-full text-black dark:text-white"
                       />
@@ -658,7 +661,7 @@ const Navbar = () => {
                               key={movie._id}
                               onClick={handleSearchResultClick}
                             >
-                              {movie.category === "668a50d1e611d41804d5fef3" ? (
+                              {movie.category === "6707deacefc8651f796e12e9" ? (
                                 <Link
                                   href={`/bangla-movie/${movie._id}`}
                                   className="hover:text-gray-400"
@@ -666,7 +669,7 @@ const Navbar = () => {
                                   {movie.movieName}
                                 </Link>
                               ) : movie.category ===
-                                "668a50dce611d41804d5fef6" ? (
+                                "6707deb3efc8651f796e12ec" ? (
                                 <Link
                                   href={`/bollywood-movie/${movie._id}`}
                                   className="hover:text-gray-400"
@@ -674,7 +677,7 @@ const Navbar = () => {
                                   {movie.movieName}
                                 </Link>
                               ) : movie.category ===
-                                "668a50e5e611d41804d5fef9" ? (
+                                "6707debaefc8651f796e12ef" ? (
                                 <Link
                                   href={`/hollywood-movie/${movie._id}`}
                                   className="hover:text-gray-400"
@@ -682,7 +685,7 @@ const Navbar = () => {
                                   {movie.movieName}
                                 </Link>
                               ) : movie.category ===
-                                "6697f7187cfffca977f476c4" ? (
+                                "6707e54befc8651f796e139c" ? (
                                 <Link
                                   href={`/korean-movie/${movie._id}`}
                                   className="hover:text-gray-400"
