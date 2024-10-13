@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://marsflixbd.vercel.app"),
+  metadataBase: new URL("https://marsflix-bd.vercel.app"),
   title: {
     default: "MarsFlixBD | Download Anime, Movies, Series",
     template: "%s | MarsFlixBD | Download Anime, Movies, Series",
@@ -57,7 +57,7 @@ export const metadata = {
       "MarsFlixBD | Download Movies & Series - Anime, Bollywood, Hollywood",
     description:
       "Download the latest anime, Bangla, Bollywood, Hollywood movies, and series for free at MarsFlixBD. Enjoy high-quality content with easy downloads.",
-    url: "https://marsflixbd.vercel.app",
+    url: "https://marsflix-bd.vercel.app",
     siteName: "MarsFlixBD",
     type: "website",
     local: "en_US",
@@ -82,10 +82,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Search Console: */}
         <meta
           name="google-site-verification"
-          content="Lx4dF6uLrGBPy-3SsfGWyQwAGck5h5T7vdtu4nIWUOM"
+          content="3R42dHfOnymRTaz1sRJC0i6lf_AvROg5iC4Qdlh8ijo"
         />
       </head>
       <body className={`${inter.className}`}>

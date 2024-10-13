@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://marsflixbd.vercel.app/sitemap.xml",
+    sitemap: "https://marsflix-bd.vercel.app/sitemap.xml",
   };
 }
