@@ -25,7 +25,7 @@ const RecentKoreanMovies = async () => {
           href="/korean-movie"
           className="text-blue-500 hover:text-blue-600"
         >
-          See all
+          See All
         </Link>
       </div>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">

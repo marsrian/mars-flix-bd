@@ -7,10 +7,17 @@ import { getSingleMovie } from "@/components/fetch/getMovies";
 import { Button } from "@/components/ui/button";
 import ShareMovieSocial from "@/components/ShareMovieSocial";
 
-export const metadata = {
-  title: "Hollywood Movie",
-  description:
-    "Download the latest Hollywood movies at MarsFlixBD. Enjoy free, high-quality downloads of your favorite Hollywood films.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/movies/${params.id}`
+  );
+  const movieData = await res.json();
+
+  return {
+    title: `${movieData.movie.movieName}`,
+    description: movieData.movie.description,
+    keywords: movieData.movie.description.split(" "),
+  };
 };
 
 const SingleHollywoodMoviePage = async ({ params }) => {

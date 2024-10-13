@@ -7,10 +7,17 @@ import { getSingleMovie } from "@/components/fetch/getMovies";
 import { Button } from "@/components/ui/button";
 import ShareMovieSocial from "@/components/ShareMovieSocial";
 
-export const metadata = {
-  title: "Korean Movie",
-  description:
-    "MarsFlixBD: Your destination for free Korean movie downloads. Enjoy the latest films in HD.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/movies/${params.id}`
+  );
+  const movieData = await res.json();
+
+  return {
+    title: `${movieData.movie.movieName}`,
+    description: movieData.movie.description,
+    keywords: movieData.movie.description.split(" "),
+  };
 };
 
 const SingleKoreanMoviePage = async ({ params }) => {

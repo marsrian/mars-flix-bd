@@ -7,10 +7,17 @@ import Link from "next/link";
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 
-export const metadata = {
-  title: "Anime Series",
-  description:
-    "Download the latest anime series at MarsFlixBD. Enjoy free, high-quality downloads of your favorite anime shows.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/web-series/${params.id}`
+  );
+  const seriesData = await res.json();
+
+  return {
+    title: `${seriesData.singleWebSeries.seriesName}`,
+    description: seriesData.singleWebSeries.description,
+    keywords: seriesData.singleWebSeries.description.split(" "),
+  };
 };
 
 const SingleAnimeSeriesPage = async ({ params }) => {

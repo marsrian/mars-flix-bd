@@ -7,10 +7,17 @@ import { getSingleMovie } from "@/components/fetch/getMovies";
 import { Button } from "@/components/ui/button";
 import ShareMovieSocial from "@/components/ShareMovieSocial";
 
-export const metadata = {
-  title: "Bollywood Movie",
-  description:
-    "Explore and download the newest Bollywood movies at MarsFlixBD. Free, high-quality downloads available.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/movies/${params.id}`
+  );
+  const movieData = await res.json();
+
+  return {
+    title: `${movieData.movie.movieName}`,
+    description: movieData.movie.description,
+    keywords: movieData.movie.description.split(" "),
+  };
 };
 
 const SingleBollywoodMoviePage = async ({ params }) => {

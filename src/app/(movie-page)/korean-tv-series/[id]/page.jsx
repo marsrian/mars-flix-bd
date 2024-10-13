@@ -7,10 +7,17 @@ import Link from "next/link";
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 
-export const metadata = {
-  title: "Korean TV Series",
-  description:
-    "Explore and download the newest Korean TV series at MarsFlixBD. Free, high-quality downloads of your favorite shows.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/web-series/${params.id}`
+  );
+  const seriesData = await res.json();
+
+  return {
+    title: `${seriesData.singleWebSeries.seriesName}`,
+    description: seriesData.singleWebSeries.description,
+    keywords: seriesData.singleWebSeries.description.split(" "),
+  };
 };
 
 const SingleKoreanSeriesPage = async ({ params }) => {

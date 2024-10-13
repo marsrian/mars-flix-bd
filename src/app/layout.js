@@ -21,7 +21,6 @@ export const metadata = {
   applicationName: "MarsFlixBD",
   keywords: [
     "free movie downloads",
-    "HD movie downloads",
     "download latest movies",
     "Bollywood movie downloads",
     "Hollywood movie downloads",
@@ -39,6 +38,7 @@ export const metadata = {
     "Korean TV series downloads",
     "high quality movie downloads",
     "free movie streaming",
+    "bangla blog website",
     "marsflixbd",
   ],
   authors: [
@@ -81,6 +81,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Search Console: */}
+        <meta
+          name="google-site-verification"
+          content="G_temG5Xk7nXWyY11Hv0-ETRuShv-gT5Uw9Pd6t0YQ0"
+        />
+      </head>
       <body className={`${inter.className}`}>
         <ThemeProvider
           attribute="class"

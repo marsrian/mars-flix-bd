@@ -22,12 +22,12 @@ const RecentAnimeMovie = async () => {
           Anime Movie:
         </h1>
         <Link href="/anime-movie" className="text-blue-500 hover:text-blue-600">
-          See all
+          See All
         </Link>
       </div>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
         {sortedAnimeMovies.length > 0 &&
-          sortedAnimeMovies.slice(0, 12).map((animeMovies) => (
+          sortedAnimeMovies.slice(0, 6).map((animeMovies) => (
             <Link
               href={`/anime-movie/${animeMovies._id}`}
               className="group block border-1 shadow-md shadow-slate-600 hover:opacity-90 overflow-x-hidden mt-2"

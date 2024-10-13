@@ -7,10 +7,17 @@ import Link from "next/link";
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 
-export const metadata = {
-  title: "Bangla Web Series",
-  description:
-    "Download the latest Bangla web series at MarsFlixBD. Enjoy free, high-quality downloads of your favorite Bangla shows.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/web-series/${params.id}`
+  );
+  const seriesData = await res.json();
+
+  return {
+    title: `${seriesData.singleWebSeries.seriesName}`,
+    description: seriesData.singleWebSeries.description,
+    keywords: seriesData.singleWebSeries.description.split(" "),
+  };
 };
 
 const SingleBanglaWebSeriesPage = async ({ params }) => {

@@ -7,10 +7,17 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ShareMovieSocial from "@/components/ShareMovieSocial";
 
-export const metadata = {
-  title: "Anime Movie",
-  description:
-    "MarsFlixBD: Your source for free anime movie downloads. Get the latest releases in HD quality now.",
+export const generateMetadata = async ({ params }) => {
+  const res = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/movies/${params.id}`
+  );
+  const movieData = await res.json();
+
+  return {
+    title: `${movieData.movie.movieName}`,
+    description: movieData.movie.description,
+    keywords: movieData.movie.description.split(" "),
+  };
 };
 
 const SingleAnimeMoviePage = async ({ params }) => {
