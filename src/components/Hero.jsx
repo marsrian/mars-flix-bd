@@ -47,11 +47,11 @@ const Hero = () => {
                 <p className="md:w-[522px] text-lg text-white my-8">
                   {movieItem.desc}
                 </p>
-                <div className="flex space-x-3">
+                {/* <div className="flex space-x-3">
                   <button className="font-semibold text-lg px-3 py-2 bg-[#ff3811] text-white rounded-[5px]">
                     See More
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </CarouselItem>
