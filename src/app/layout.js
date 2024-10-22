@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/lib/AuthProvider";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,6 +83,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google Analytics tag (gtag.js): */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-33E8J1M9WC"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+              window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-33E8J1M9WC');
+          `}
+        </Script>
+        {/* Google Search Console */}
         <meta
           name="google-site-verification"
           content="3R42dHfOnymRTaz1sRJC0i6lf_AvROg5iC4Qdlh8ijo"
