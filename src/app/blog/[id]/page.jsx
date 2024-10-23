@@ -46,6 +46,35 @@ const BlogDetails = ({ params }) => {
 
   useEffect(() => {
     fetchBlog();
+    // for adstera
+    const script1 = document.createElement("script");
+    script1.type = "text/javascript";
+    script1.src =
+      "//windyplentiful.com/43/6a/f4/436af4beb161efb32216003e742b9dc9.js";
+
+    // Create the second script element for another ad
+    const script2 = document.createElement("script");
+    script2.type = "text/javascript";
+    script2.src =
+      "//windyplentiful.com/43/6a/f4/436af4beb161efb32216003e742b9dc9.js";
+
+    // Get the containers for the ads
+    const adContainer1 = document.getElementById("ad-container-1");
+    const adContainer2 = document.getElementById("ad-container-2");
+
+    // Append the scripts to the respective containers
+    if (adContainer1) adContainer1.appendChild(script1);
+    if (adContainer2) adContainer2.appendChild(script2);
+
+    // Clean up the scripts if the component unmounts
+    return () => {
+      if (adContainer1 && adContainer1.contains(script1)) {
+        adContainer1.removeChild(script1);
+      }
+      if (adContainer2 && adContainer2.contains(script2)) {
+        adContainer2.removeChild(script2);
+      }
+    };
   }, []);
 
   const timeStr = blogDetails?.createdAt;
@@ -145,7 +174,7 @@ const BlogDetails = ({ params }) => {
   };
 
   return (
-    <section className="container max-w-3xl mx-auto px-2 md:px-0">
+    <section className="container max-w-3xl mx-auto px-4 md:px-0">
       <div className="flex flex-col items-center justify-center">
         <Link href={`/user/${blogDetails?.authorId?._id.toString()}`}>
           <div className="flex flex-col justify-center items-center py-10">
@@ -164,10 +193,14 @@ const BlogDetails = ({ params }) => {
 
             <div className="text-center">
               <p className="italic">Author: {blogDetails?.authorId?.name}</p>
-              {/* <p>{blogDetails?.authorId?.designation}</p> */}
             </div>
           </div>
         </Link>
+        
+        {/* First Ad Placement */}
+        <div id="ad-container-1" className="ad-container my-4">
+          {/* First Ad will be injected here */}
+        </div>
 
         <div className="text-center space-y-3">
           <h2 className="font-semibold text-lg">{blogDetails?.title}</h2>
@@ -186,6 +219,11 @@ const BlogDetails = ({ params }) => {
             </span>
           </p>
 
+          {/* Second Ad Placement */}
+          <div id="ad-container-2" className="ad-container my-2">
+            {/* Second Ad will be injected here */}
+          </div>
+
           <div>
             <Image
               src={blogDetails?.image ? blogDetails?.image?.url : demoImage}
@@ -197,11 +235,16 @@ const BlogDetails = ({ params }) => {
             />
           </div>
 
+          {/* Optionally, add a third Ad Placement */}
+          <div id="ad-container-3" className="ad-container my-4">
+            {/* Third Ad will be injected here */}
+          </div>
+
           <div className="text-start">
             <div className="space-y-5">
               {blogDetails?.description && (
                 <div
-                  className="space-y-4"
+                  className="space-y-4 text-justify"
                   dangerouslySetInnerHTML={{ __html: blogDetails?.description }}
                 ></div>
               )}

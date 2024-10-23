@@ -102,6 +102,16 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="3R42dHfOnymRTaz1sRJC0i6lf_AvROg5iC4Qdlh8ijo"
         />
+        {/* Adstera PopUnder */}
+        <Script
+          type="text/javascript"
+          src="//windyplentiful.com/cb/c1/9f/cbc19f601d6222bbdb24e6b2bc2068df.js"
+        ></Script>
+        {/* Adstera SocialBar */}
+        <Script
+          type="text/javascript"
+          src="//windyplentiful.com/43/6a/f4/436af4beb161efb32216003e742b9dc9.js"
+        ></Script>
       </head>
       <body className={`${inter.className}`}>
         <ThemeProvider
